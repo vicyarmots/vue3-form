@@ -55,13 +55,19 @@
     ></v-input>
     <v-error v-if="errors.phone" :error="errors.phone"></v-error>
 
-    <v-button :title="`log in`"></v-button>
+    <v-button
+      :title="`log in`"
+      @click="handleSignIn"
+      :disabled="isSignupButtonDisabled"
+    ></v-button>
   </div>
 </template>
 
 <script setup lang="ts">
 import { reactive } from "vue";
 import useFormValidation from "../hooks/useFormValidation";
+import useSubmitButtonState from "../hooks/useSubmitButtonState";
+import { IUser } from "../models/user-models";
 
 export type UserFormState = Record<
   "email" | "password" | "confirmPassword" | "name" | "phone",
@@ -76,6 +82,13 @@ const formState: UserFormState = reactive({
   phone: "",
 });
 
+const userState: IUser = reactive({
+  email: "",
+  password: "",
+  name: "",
+  phone: "",
+});
+
 const {
   validateNameField,
   validateEmailField,
@@ -83,6 +96,16 @@ const {
   validatePhoneField,
   errors,
 } = useFormValidation();
+
+const { isSignupButtonDisabled } = useSubmitButtonState(
+  userState as IUser & string,
+  errors as string[]
+);
+
+function handleSignIn(): void {
+  alert("not implemented");
+  console.log(userState); // TODO: ADD USER STORE
+}
 
 const isValidatedName = () => validateNameField("name", formState.name);
 
