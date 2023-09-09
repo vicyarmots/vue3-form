@@ -3,6 +3,11 @@ export const useValidator = () => {
     return !fieldValue ? "The " + fieldName + " field is required" : "";
   };
 
+  const isNum = (fieldName: string, fieldValue: string) => {
+    let isNum = /^\d+$/.test(fieldValue);
+    return !isNum ? "The " + fieldName + " field only have numbers" : "";
+  };
+
   const minLength = (fieldName: string, fieldValue: string, min: number) => {
     return fieldValue.length < min
       ? `The ${fieldName} field must be atleast ${min} characters long`
@@ -16,5 +21,5 @@ export const useValidator = () => {
       ? "The input is not a valid " + fieldName + " address"
       : "";
   };
-  return { isEmpty, minLength, isEmail };
+  return { isEmpty, isNum, minLength, isEmail };
 };

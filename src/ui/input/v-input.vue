@@ -2,7 +2,8 @@
   <div class="input-wrapper">
     <label for="input">{{ label }}</label>
     <input
-      id="input"
+      id="id"
+      :autocomplete="autocomplete"
       :name="name"
       :type="type"
       :placeholder="placeholder"
@@ -20,14 +21,12 @@
 <script setup lang="ts">
 import { InputProps } from "../../models/ui-models";
 
-const { label, name, type, placeholder, modelValue } = withDefaults(
-  defineProps<InputProps & { modelValue: string }>(),
-  {
+const { label, name, type, placeholder, modelValue, autocomplete } =
+  withDefaults(defineProps<InputProps & { modelValue: string }>(), {
     name: "input",
     type: "text",
     placeholder: "default",
-  }
-);
+  });
 </script>
 
 <style scoped lang="css"></style>

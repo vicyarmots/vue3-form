@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 const { error } = withDefaults(defineProps<{ error: string }>(), {
-  error: "error",
+  error: "",
 });
 </script>
 
