@@ -21,5 +21,7 @@ defineEmits(["buttonAction"]);
   background: black;
   color: white;
   text-transform: capitalize;
+  margin-top: 20px;
+  border-radius: 15px;
 }
 </style>

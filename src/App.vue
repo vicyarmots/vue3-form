@@ -3,12 +3,17 @@ import loginForm from "./components/login-form.vue";
 </script>
 
 <template>
-  <div>
+  <div class="main">
     <login-form></login-form>
   </div>
 </template>
 
 <style scoped>
+main {
+  width: 100vw;
+  height: 100vh;
+  background: white;
+}
 .text {
   color: red;
 }
