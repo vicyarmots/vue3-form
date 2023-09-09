@@ -1,6 +1,8 @@
 import { createApp } from "vue";
 import "./style.css";
 import App from "./App.vue";
+import router from "./router";
+import store from "./store/todo";
 
 // register global ui components
 import vButton from "./ui/button/v-button.vue";
@@ -16,5 +18,8 @@ app.component("v-error", vError);
 app.component("v-loader", vLoader);
 app.component("v-input", vInput);
 app.component("v-file-uploader", vFileUploader);
+
+app.use(router);
+app.use(store as any);
 
 app.mount("#app");

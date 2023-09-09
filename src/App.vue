@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import loginForm from "./components/login-form.vue";
+import store from "./store/todo";
+import { provide } from "vue";
+
+provide("store", store);
 </script>
 
 <template>
   <div class="main">
-    <login-form></login-form>
+    <router-view></router-view>
   </div>
 </template>
 
