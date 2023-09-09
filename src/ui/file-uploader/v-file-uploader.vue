@@ -1,8 +1,7 @@
 <template>
-  <div class="input-wrapper">
-    <label for="input">{{ label }}</label>
+  <div class="uploader-wrapper">
+    <label>{{ label }}</label>
     <input
-      id="input"
       :name="name"
       :type="type"
       :placeholder="placeholder"
@@ -21,7 +20,7 @@
 import { InputProps } from "../../models/ui-models";
 
 const { label, name, type, placeholder, modelValue } = withDefaults(
-  defineProps<InputProps & { modelValue: string }>(),
+  defineProps<InputProps & { modelValue?: string }>(),
   {
     name: "input",
     type: "text",

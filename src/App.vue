@@ -4,6 +4,8 @@ import { ref } from "vue";
 const error = ref<string>("");
 
 const childModel = ref<string>("");
+const model2 = ref<string>("");
+const model3 = ref<string>("");
 
 const handleEvent = () => (error.value = "Error");
 </script>
@@ -11,8 +13,11 @@ const handleEvent = () => (error.value = "Error");
 <template>
   <div>
     <v-button :title="`submit`" @buttonAction="handleEvent"></v-button>
-    <v-input v-model:childModel="childModel"></v-input>
+    <v-input v-model:modelValue="model2"></v-input>
+    <v-input v-model:modelValue="model3"></v-input>
+    <v-file-uploader :type="`file`" :label="`upload`"></v-file-uploader>
     <h1 class="text">{{ childModel }}</h1>
+    <h1 class="text" v-if="error.length !== 0">ERROR</h1>
   </div>
 </template>
 

@@ -1,20 +1,17 @@
 <template>
-  <button class="button" @click="handleEmit">
+  <button class="button" @click="$emit('buttonAction')" :disabled="disabled">
     {{ title }}
   </button>
 </template>
 
 <script setup lang="ts">
-const { title } = withDefaults(
-  defineProps<{
-    title: string;
-  }>(),
-  { title: "default" }
-);
+import { ButtonProps } from "../../models/ui-models";
 
-const emit = defineEmits<{ (e: "buttonAction", payload?: object): void }>();
+const { title } = withDefaults(defineProps<ButtonProps>(), {
+  title: "default",
+});
 
-const handleEmit = () => emit("buttonAction");
+defineEmits(["buttonAction"]);
 </script>
 
 <style scoped lang="css">
