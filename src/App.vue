@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import loginForm from "./components/login-form.vue";
 
 const error = ref<string>("");
 
@@ -12,6 +13,7 @@ const handleEvent = () => (error.value = "Error");
 
 <template>
   <div>
+    <login-form></login-form>
     <v-button :title="`submit`" @buttonAction="handleEvent"></v-button>
     <v-input v-model:modelValue="model2"></v-input>
     <v-input v-model:modelValue="model3"></v-input>
