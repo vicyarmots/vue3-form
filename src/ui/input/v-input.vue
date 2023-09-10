@@ -8,6 +8,7 @@
       :type="type"
       :placeholder="placeholder"
       :value="modelValue"
+      :pattern="pattern"
       class="field"
       @input="
         (event) => {
@@ -22,7 +23,7 @@
 <script setup lang="ts">
 import { InputProps } from "../../models/ui-models";
 
-const { label, name, type, placeholder, modelValue, autocomplete } =
+const { label, name, type, placeholder, modelValue, autocomplete, pattern } =
   withDefaults(defineProps<InputProps & { modelValue: string }>(), {
     name: "input",
     type: "text",
@@ -53,7 +54,7 @@ label {
 .input-wrapper {
   display: flex;
   flex-direction: column;
-  margin: 10px;
+  margin-top: 20px;
 }
 
 .field {
@@ -61,12 +62,13 @@ label {
   padding: 20px;
   width: 300px;
   flex-shrink: 0;
-  border-radius: 42.5px;
+  border-radius: 20px;
   background: #f9f9f9;
   box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.08) inset,
     -10px -10px 20px 0px #ffffff7b inset;
 
   fill: linear-gradient(309deg, #f2f3f6 -13.68%, #e5e6ec 171.92%);
+
   cursor: pointer;
 }
 </style>

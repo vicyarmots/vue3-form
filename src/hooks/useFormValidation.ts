@@ -4,7 +4,7 @@ import { useValidator } from "./useValidator";
 const errors: Record<string, any> = reactive({});
 
 export default function useFormValidation() {
-  const { isEmpty, isNum, minLength, isEmail } = useValidator();
+  const { isEmpty, isNum, minLength, isEmail, isConfirmed } = useValidator();
 
   const validateNameField = (fieldName: string, fieldValue: string) => {
     errors[fieldName] = !fieldValue
@@ -30,11 +30,22 @@ export default function useFormValidation() {
       : minLength(fieldName, fieldValue, 8);
   };
 
+  const validateConfirmPassword = (
+    fieldName: string,
+    fieldValue: string,
+    confirmValue: string
+  ) => {
+    errors[fieldName] = !fieldValue
+      ? isEmpty(fieldName, fieldValue)
+      : isConfirmed(fieldValue, confirmValue);
+  };
+
   return {
     errors,
     validateNameField,
     validateEmailField,
     validatePhoneField,
     validatePasswordField,
+    validateConfirmPassword,
   };
 }
